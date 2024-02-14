@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch1xb5y25g0qg"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_l3yo6"]
+[ext_resource type="Texture2D" uid="uid://cd4yex1p3o0wp" path="res://x.png" id="2_757bx"]
+[ext_resource type="Shader" path="res://background.gdshader" id="2_aa5ce"]
+[ext_resource type="FontFile" uid="uid://c3iqo52c8vtap" path="res://ALGER.TTF" id="3_wcjbw"]
+[ext_resource type="Texture2D" uid="uid://danu1glm2dukf" path="res://button.png" id="5_7gpnn"]
+[ext_resource type="AudioStream" uid="uid://bim5e7lw37b41" path="res://sfx.ogg" id="6_lpu34"]
+
+[sub_resource type="Gradient" id="Gradient_kfn0a"]
+offsets = PackedFloat32Array(0, 0.792208)
+colors = PackedColorArray(1, 0.85098, 0, 1, 0.501961, 0.00392157, 0.470588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_52f0l"]
+gradient = SubResource("Gradient_kfn0a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3uwn"]
+shader = ExtResource("2_aa5ce")
+shader_parameter/color_signal = Color(0.517647, 0.0705882, 0.537255, 1)
+shader_parameter/size = 0.2
+shader_parameter/zoom = 10.0
+shader_parameter/speed = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe1d5"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.92549, 0.733333, 0.141176, 0.286275)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w7ov1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itbwf"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_l3yo6")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(635.999, 359)
+scale = Vector2(20.125, 11.2812)
+texture = SubResource("GradientTexture2D_52f0l")
+
+[node name="waves" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_m3uwn")
+position = Vector2(640, 360)
+scale = Vector2(20, 11.25)
+texture = SubResource("GradientTexture2D_52f0l")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(640, 247)
+texture = ExtResource("2_757bx")
+
+[node name="title" type="Label" parent="."]
+offset_left = 528.0
+offset_top = 16.0
+offset_right = 768.0
+offset_bottom = 84.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.701961, 0, 0.588235, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("3_wcjbw")
+theme_override_font_sizes/font_size = 60
+text = "G  I  N  A
+"
+
+[node name="subtitle" type="Label" parent="title"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_wcjbw")
+theme_override_font_sizes/font_size = 13
+text = "Gina Inteligência Não Artificial"
+
+[node name="instructions" type="Label" parent="."]
+offset_left = 161.0
+offset_top = 387.0
+offset_right = 1120.0
+offset_bottom = 580.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.133333, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_wcjbw")
+theme_override_font_sizes/font_size = 22
+text = "Ela tudo vê.
+
+Evoca a Gina com respeito e de acordo com os costumes antigos:
+
+\"Oh bela e nova Gina, tu és quem mais me ensina.\"
+
+A evocação deverá ser oral, por escrito e efetuada antes de qulaquer questão."
+horizontal_alignment = 1
+
+[node name="input" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 176.0
+offset_top = 632.0
+offset_right = 1104.0
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_qe1d5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w7ov1")
+
+[node name="answer" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_top = 488.0
+offset_right = 682.0
+offset_bottom = 547.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_wcjbw")
+theme_override_font_sizes/font_size = 30
+
+[node name="reload_button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 627.0
+offset_top = 182.0
+offset_right = 651.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_itbwf")
+icon = ExtResource("5_7gpnn")
+flat = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lpu34")
+
+[connection signal="text_changed" from="input" to="." method="_on_input_text_changed"]
+[connection signal="text_submitted" from="input" to="." method="_on_input_text_submitted"]
+[connection signal="pressed" from="reload_button" to="." method="_on_reload_button_pressed"]
