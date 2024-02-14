@@ -6,8 +6,12 @@ extends Node2D
 @onready var background := $background
 @onready var instructions := $instructions
 @onready var title := $title
-@onready var reload_button := $reload_button
+@onready var reload_button := $sprite/reload_button
 @onready var sfx := $sfx
+@onready var papyrus := $papyrus
+@onready var column_left := $column_left
+@onready var column_right := $column_right
+
 
 var fake := "Oh bela e nova Gina, tu és quem mais me ensina."
 var fake_len : int
@@ -20,7 +24,8 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	$light.global_position = get_global_mouse_position()
+	
 	
 func _input(event):
 	if event.is_action_pressed("secret"):
@@ -48,6 +53,9 @@ func _on_input_text_submitted(new_text):
 func show_answer():
 	waves.visible = false
 	title.visible = false
+	papyrus.visible = false
+	column_left.visible = false
+	column_right.visible = false
 	background.modulate = Color.BLACK
 	if answer.text == "":
 		answer.text = "Eu sou a GINA"
